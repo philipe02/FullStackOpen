@@ -15,8 +15,12 @@ const App = () => {
     return <h1>{course}</h1>
   }
 
+  const Part = ({ info }) => {
+    return <p>{info.part} {info.exercise}</p>
+  }
+
   const Content = ({ content = [] }) => {
-    return content.map(item => <p>{item.part} {item.exercise}</p>)
+    return content.map(item => <Part info={item} />)
   }
 
   const Total = ({ exercises = [] }) => {
