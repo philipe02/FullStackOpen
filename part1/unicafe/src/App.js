@@ -13,6 +13,9 @@ const App = () => {
   const incrementGood = () => setGood(good + 1);
   const incrementNeutral = () => setNeutral(neutral + 1);
   const incrementBad = () => setBad(bad + 1);
+  const getTotalReviews = () => good + neutral + bad;
+  const getAverage = () => (good - bad) / getTotalReviews();
+  const getPositivePercentage = () => `${(good / getTotalReviews()) * 100}`
 
   return (
     <div>
@@ -27,6 +30,9 @@ const App = () => {
         <p>good {good}</p>
         <p>neutral {neutral}</p>
         <p>bad {bad}</p>
+        <p>all {getTotalReviews()}</p>
+        <p>average {getAverage()}</p>
+        <p>positive {getPositivePercentage()}</p>
       </section>
     </div>
   )
