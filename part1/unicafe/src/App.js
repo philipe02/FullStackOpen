@@ -6,21 +6,18 @@ const Button = ({ label, onClick }) => <button onClick={onClick}>{label}</button
 
 const Statistics = ({ good, neutral, bad }) => {
   const getTotalReviews = () => good + neutral + bad;
-  const getAverage = () => {
-    return getTotalReviews() ? (good - bad) / getTotalReviews() : 0;
-  }
-  const getPositivePercentage = () => {
-    return getTotalReviews() ? `${(good / getTotalReviews()) * 100}` : 0;
-  }
+  const getAverage = () => getTotalReviews() ? (good - bad) / getTotalReviews() : 0;
+  const getPositivePercentage = () => `${(good / getTotalReviews()) * 100}`;
 
-  return <section>
+
+  return getTotalReviews() ? <section>
     <p>good {good}</p>
     <p>neutral {neutral}</p>
     <p>bad {bad}</p>
     <p>all {getTotalReviews()}</p>
     <p>average {getAverage()}</p>
     <p>positive {getPositivePercentage()}</p>
-  </section>
+  </section> : "No feedback given"
 }
 
 const App = () => {
