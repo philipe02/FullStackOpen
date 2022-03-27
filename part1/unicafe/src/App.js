@@ -4,20 +4,23 @@ const Title = ({ text }) => <h1>{text}</h1>
 
 const Button = ({ label, onClick }) => <button onClick={onClick}>{label}</button>
 
+const StatisticsLine = ({ text, value }) => <p>{text} {value}</p>
+
 const Statistics = ({ good, neutral, bad }) => {
   const getTotalReviews = () => good + neutral + bad;
   const getAverage = () => getTotalReviews() ? (good - bad) / getTotalReviews() : 0;
   const getPositivePercentage = () => `${(good / getTotalReviews()) * 100}`;
 
 
-  return getTotalReviews() ? <section>
-    <p>good {good}</p>
-    <p>neutral {neutral}</p>
-    <p>bad {bad}</p>
-    <p>all {getTotalReviews()}</p>
-    <p>average {getAverage()}</p>
-    <p>positive {getPositivePercentage()}</p>
-  </section> : "No feedback given"
+  return getTotalReviews() ?
+    <section>
+      <StatisticsLine text={"good"} value={good} />
+      <StatisticsLine text={"neutral"} value={neutral} />
+      <StatisticsLine text={"bad"} value={bad} />
+      <StatisticsLine text={"all"} value={getTotalReviews()} />
+      <StatisticsLine text={"average"} value={getAverage()} />
+      <StatisticsLine text={"positive"} value={getPositivePercentage()} />
+    </section> : "No feedback given"
 }
 
 const App = () => {
