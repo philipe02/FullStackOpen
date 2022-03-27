@@ -4,7 +4,7 @@ const Title = ({ text }) => <h1>{text}</h1>
 
 const Button = ({ label, onClick }) => <button onClick={onClick}>{label}</button>
 
-const StatisticsLine = ({ text, value }) => <p>{text} {value}</p>
+const StatisticsLine = ({ text, value }) => <tr><td>{text}</td><td>{value}</td></tr>
 
 const Statistics = ({ good, neutral, bad }) => {
   const getTotalReviews = () => good + neutral + bad;
@@ -13,14 +13,17 @@ const Statistics = ({ good, neutral, bad }) => {
 
 
   return getTotalReviews() ?
-    <section>
-      <StatisticsLine text={"good"} value={good} />
-      <StatisticsLine text={"neutral"} value={neutral} />
-      <StatisticsLine text={"bad"} value={bad} />
-      <StatisticsLine text={"all"} value={getTotalReviews()} />
-      <StatisticsLine text={"average"} value={getAverage()} />
-      <StatisticsLine text={"positive"} value={getPositivePercentage()} />
-    </section> : "No feedback given"
+    <table>
+      <tbody>
+        <StatisticsLine text={"good"} value={good} />
+        <StatisticsLine text={"neutral"} value={neutral} />
+        <StatisticsLine text={"bad"} value={bad} />
+        <StatisticsLine text={"all"} value={getTotalReviews()} />
+        <StatisticsLine text={"average"} value={getAverage()} />
+        <StatisticsLine text={"positive"} value={getPositivePercentage()} />
+      </tbody>
+    </table> : "No feedback given"
+
 }
 
 const App = () => {
