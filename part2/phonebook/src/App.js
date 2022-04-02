@@ -13,6 +13,10 @@ const App = () => {
 
   const addPerson = e => {
     e.preventDefault();
+    if (JSON.stringify(persons).includes(newName)) {
+      alert(`${newName} is already added to phonebook`)
+      return
+    }
     setPersons(persons.concat({ name: newName }))
   }
 
